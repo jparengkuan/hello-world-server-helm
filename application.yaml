@@ -8,8 +8,11 @@ spec:
 
   source:
     repoURL: https://github.com/jparengkuan/hello-world-server-helm.git
-    targetRevision: master
+    targetRevision: HEAD
     path: hello-world-server
+    helm:
+      valueFiles:
+        - Values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: hello-world-server

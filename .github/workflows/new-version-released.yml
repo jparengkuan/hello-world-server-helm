@@ -17,7 +17,10 @@ jobs:
         id: imgupd
         uses: mikefarah/yq@master
         with:
-          cmd: yq eval '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' -i hello-world-server/deployment.yaml
+          cmd: |
+            yq eval '.image.tag = ${{ github.event.client_payload.tag }}' -i hello-world-server/Values.yaml
+            yq eval '.version = ${{ github.event.client_payload.tag }}' -i hello-world-server/Chart.yaml
+            yq eval '.appVersion = "${{ github.event.client_payload.tag }}"' -i hello-world-server/Values.yaml
 
       - uses: stefanzweifel/git-auto-commit-action@v5.2.0
         with:
