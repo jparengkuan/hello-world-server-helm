@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-world-server-argo-application
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/jparengkuan/hello-world-server.git
+    targetRevision: main
+    path: hello-world-server
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: hello-world-server
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
