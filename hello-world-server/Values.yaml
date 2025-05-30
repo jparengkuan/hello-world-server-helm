@@ -1,15 +1,12 @@
 replicaCount: 2
-
 image:
   repository: jparengkuan/hello-world-server
   tag: v0.0.1
   pullPolicy: IfNotPresent
-
 service:
   type: ClusterIP
   port: 3000
   targetPort: 3000
-
 resources:
   limits:
     cpu: 500m
@@ -17,3 +14,4 @@ resources:
   requests:
     cpu: 250m
     memory: 128Mi
+appVersion: ""
