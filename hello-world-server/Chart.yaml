@@ -3,4 +3,4 @@ name: hello-world-server
 description: A Helm chart for hello world server application
 type: application
 version: 0.1.0
-appVersion: ""
+appVersion: "v0.0.1"
